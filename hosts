@@ -1,0 +1,21 @@
+[web]
+web1.micro-hosting.local ansible_host=192.168.33.10 ansible_user=root
+web2.micro-hosting.local ansible_host=192.168.33.11 ansible_user=root
+web3.micro-hosting.local ansible_host=192.168.33.12 ansible_user=root
+[haproxy]
+haproxy.microhosting.local ansible_host=192.168.33.14 ansible_user=root  
+[nginx]                                                                
+nginx.micro-hosting.local ansible_host=192.168.33.13 ansible_user=root
+[db]
+db1.micro-hosting.local ansible_host=192.168.33.16 ansible_user=root
+db2.micro-hosting.local ansible_host=192.168.33.15 ansible_user=root
+[ceph]
+ceph1.micro-hosting.local ansible_host=192.168.33.17 ansible_user=root
+ceph2.micro-hosting.local ansible_host=192.168.33.18 ansible_user=root
+ceph3.micro-hosting.local ansible_host=192.168.33.19 ansible_user=root
+[linux:children]
+web
+haproxy
+nginx
+db
+ceph

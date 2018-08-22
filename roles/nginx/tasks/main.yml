@@ -1,0 +1,20 @@
+---
+- name: Updates apt cache
+  apt:
+    update_cache: true
+
+- name: Installs necessary packages
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - nginx
+
+- name: Push future default virtual host configuration
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: 0640
+
+- name: restart nginx
+  command: nginx -s reload
