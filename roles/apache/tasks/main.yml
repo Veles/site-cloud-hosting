@@ -49,6 +49,11 @@
   notify:
     - restart apache
 
+- file:
+    path: /etc/consul.d
+    state: directory
+    mode: 0755
+
 - name: Pushes consul config
   template:
     src: files/web.json

@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
       machine.vm.box = "ubuntu/bionic64"
       machine.vm.hostname = "%s.microhosting.local" % name
       ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+      config.vm.provision "shell", inline: "sudo apt update&& sudo apt install swapspace -y"
       config.vm.provision 'shell', inline: 'mkdir -p /root/.ssh'
       config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /root/.ssh/authorized_keys"
       config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys", privileged: false
@@ -28,7 +29,7 @@ Vagrant.configure("2") do |config|
       machine.vm.network :private_network, ip: ip
       machine.vm.provider "virtualbox" do |v|
           v.name = name
-          v.customize ["modifyvm", :id, "--memory", 256]
+          v.customize ["modifyvm", :id, "--memory", 300]
       end
     end
   end
