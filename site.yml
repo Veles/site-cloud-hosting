@@ -16,4 +16,8 @@
 
 - hosts: consul-server
   roles:
-     - { role: consul-server }  
+     - { role: consul-server } 
+ 
+- hosts: consul-client
+  roles:
+     - { role: consul-client } 

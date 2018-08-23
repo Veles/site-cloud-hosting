@@ -3,4 +3,7 @@
 192.168.33.12 web3.microhosting.local
 192.168.33.13 nginx.microhosting.local
 192.168.33.14 haproxy.microhosting.local
+192.168.33.17 ceph1.microhosting.local
+192.168.33.18 ceph2.microhosting.local
+192.168.33.19 ceph3.microhosting.local
 192.168.33.20 consul.microhosting.local

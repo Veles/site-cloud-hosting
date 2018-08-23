@@ -17,6 +17,8 @@
     owner: root
     group: root
 
+
+
 - name: Pushes unit
   template:
     src: files/consul.service

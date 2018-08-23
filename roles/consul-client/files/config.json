@@ -1,7 +1,7 @@
 {
     "bootstrap_expect": 3,
     "client_addr": "0.0.0.0",
-    "datacenter": "Us-Central",
+    "datacenter": "microhosting",
     "data_dir": "/var/consul",
     "domain": "consul",
     "enable_script_checks": true,
@@ -17,8 +17,11 @@
     "server": true,
     "start_join": [
 {% for host in groups['consul-server'] %}
- "{{ hostvars[host]['ansible_enp0s8']['ipv4']['address'] }}"
+ "{{ hostvars[host]['ansible_enp0s8']['ipv4']['address'] }}" {% if not loop.last %}
+    ,
+{% endif %}
+
 {% endfor %}
     ],
-    "ui": true
+    "ui": false
 }

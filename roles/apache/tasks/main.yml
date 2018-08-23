@@ -49,3 +49,11 @@
   notify:
     - restart apache
 
+- name: Pushes consul config
+  template:
+    src: files/web.json
+    dest: /etc/consul.d/web.json
+    mode: 0640
+    owner: root
+    group: root
+

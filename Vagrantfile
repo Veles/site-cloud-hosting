@@ -9,9 +9,9 @@ hosts = {
   "haproxy" => "192.168.33.14",
 #  "db1" => "192.168.33.15",
 #  "db2" => "192.168.33.16",
-#  "ceph1" => "192.168.33.17",
-#  "ceph2" => "192.168.33.18",
-#  "ceph3" => "192.168.33.19",
+  "ceph1" => "192.168.33.17",
+  "ceph2" => "192.168.33.18",
+  "ceph3" => "192.168.33.19",
   "consul" => "192.168.33.20"
 
 }
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
       machine.vm.network :private_network, ip: ip
       machine.vm.provider "virtualbox" do |v|
           v.name = name
-          v.customize ["modifyvm", :id, "--memory", 400]
+          v.customize ["modifyvm", :id, "--memory", 256]
       end
     end
   end
