@@ -17,7 +17,7 @@
     "server": true,
     "start_join": [
 {% for host in groups['consul-server'] %}
- "{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}"
+ "{{ hostvars[host]['ansible_enp0s8']['ipv4']['address'] }}"
 {% endfor %}
     ],
     "ui": true

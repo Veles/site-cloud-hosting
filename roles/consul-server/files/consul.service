@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c '/usr/local/bin/consul agent -config-dir /etc/consul.d/'
+ExecStart=/bin/bash -c '/usr/local/bin/consul agent -config-dir /etc/consul.d/ --bind {{ ansible_enp0s8["ipv4"]["address"] }}'
 TimeoutStartSec=0
 
 [Install]

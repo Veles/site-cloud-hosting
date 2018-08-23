@@ -1,0 +1,24 @@
+{
+    "bootstrap_expect": 3,
+    "client_addr": "0.0.0.0",
+    "datacenter": "Us-Central",
+    "data_dir": "/var/consul",
+    "domain": "consul",
+    "enable_script_checks": true,
+    "dns_config": {
+        "enable_truncate": true,
+        "only_passing": true
+    },
+    "enable_syslog": true,
+    "encrypt": "ZtlT8My/6ZHk0MbGPVeQ6Q==",
+    "leave_on_terminate": true,
+    "log_level": "INFO",
+    "rejoin_after_leave": true,
+    "server": true,
+    "start_join": [
+{% for host in groups['consul-server'] %}
+ "{{ hostvars[host]['ansible_enp0s8']['ipv4']['address'] }}"
+{% endfor %}
+    ],
+    "ui": true
+}
