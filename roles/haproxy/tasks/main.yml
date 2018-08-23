@@ -1,9 +1,12 @@
 ---
 - name: Installs haproxy load balancer
   apt:
-    pkg: haproxy
+    pkg: "{{ item }}"
     state: present
     update_cache: yes
+  with_items:
+     - haproxy
+     - socat
 
 - name: Pushes configuration
   template:

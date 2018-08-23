@@ -1,0 +1,34 @@
+---
+
+- name: add consul binary
+  copy:
+    src: files/consul
+    dest: /usr/local/bin/consul
+    mode: 0655
+
+- name: create consul dir
+  command: mkdir /etc/consul.d -p
+
+- name: Pushes configuration
+  template:
+    src: files/config.json
+    dest: /etc/consul.d/config.json
+    mode: 0640
+    owner: root
+    group: root
+
+- name: Pushes unit
+  template:
+    src: files/consul.service
+    dest: /etc/systemd/system/consul.service
+    mode: 0640
+    owner: root
+    group: root
+
+-  name: enable consul
+   service: name=consul enabled=yes
+
+-  name: start consul
+   service: name=consul state=started
+
+

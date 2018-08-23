@@ -54,6 +54,11 @@
 
     - name: Checks if resolver is working properly with new nameserver
       command: host -t A ansible.cc
+      ignore_errors: yes
+
+
+    - name: link to python
+      command: ln -s /usr/bin/python3 /usr/bin/python
 
     - name: Final greeting
       pause:
