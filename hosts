@@ -20,6 +20,7 @@ ceph3.microhosting.local ansible_host=192.168.33.19 ansible_user=root
 consul.micro-hosting.local ansible_host=192.168.33.20 ansible_user=root
 [consul-client:children]
 web
+haproxy
 [consul:children]
 consul-server
 ceph
@@ -30,4 +31,3 @@ nginx
 db
 ceph
 consul-server
-
