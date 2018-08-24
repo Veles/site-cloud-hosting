@@ -4,8 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c '/usr/bin/consul-haproxy -in /etc/haproxy/haproxy.def -out /etc/haproxy/haproxy.cfg -backend "app=web@microhosting" -reload "systemctl reload haproxy "
-'
+ExecStart=/bin/bash -c '/usr/bin/consul-haproxy -in /etc/haproxy/haproxy.def -out /etc/haproxy/haproxy.cfg -backend "app=web@microhosting" -reload "systemctl reload haproxy"'
 TimeoutStartSec=0
 
 [Install]

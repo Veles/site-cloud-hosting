@@ -16,8 +16,8 @@
     owner: root
     group: root
 
-- name: Pushes unit
-  template:
+- name: Pushes consul-haproxy
+  copy:
     src: files/consul-haproxy
     dest: /usr/bin/consul-haproxy
     mode: 0755

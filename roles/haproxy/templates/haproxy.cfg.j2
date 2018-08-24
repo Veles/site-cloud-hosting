@@ -18,11 +18,7 @@ listen cluster
     balance roundrobin
     {% raw %}
     {{range .app}}
-    {{.}} maxconn 32{{end}}
-
-
+    {{.}} maxconn 32 check port 80 {{end}}
     {% endraw %}
-
-
 
    option httpchk HEAD /index.php HTTP/1.0
