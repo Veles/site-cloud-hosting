@@ -11,12 +11,35 @@
 - name: Pushes configuration
   template:
     src: templates/haproxy.cfg.j2
-    dest: /etc/haproxy/haproxy.cfg
+    dest: /etc/haproxy/haproxy.def
     mode: 0640
     owner: root
     group: root
-  notify:
-    - restart haproxy
+
+- name: Pushes unit
+  template:
+    src: files/consul-haproxy
+    dest: /usr/bin/consul-haproxy
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Pushes unit
+  template:
+    src: files/consul-haproxy.service
+    dest: /etc/systemd/system/consul-haproxy.service
+    mode: 0640
+    owner: root
+    group: root
+
+
+
+-  name: enable consul-haproxy
+   service: name=consul-haproxy enabled=yes
+
+-  name: start consul-haproxy
+   service: name=consul-haproxy state=restarted
+
 
 - name: Sets default starting flag to 1
   lineinfile:
@@ -25,4 +48,3 @@
     line: "ENABLED=1"
   notify:
     - restart haproxy
-

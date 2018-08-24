@@ -17,8 +17,6 @@
     owner: root
     group: root
 
-
-
 - name: Pushes unit
   template:
     src: files/consul.service
@@ -31,6 +29,4 @@
    service: name=consul enabled=yes
 
 -  name: start consul
-   service: name=consul state=started
-
-
+   service: name=consul state=restarted

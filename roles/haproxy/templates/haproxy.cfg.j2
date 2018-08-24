@@ -16,10 +16,12 @@ listen cluster
     mode http
     stats enable
     balance roundrobin
-
+    {% raw %}
+    {{range .app}}
     {{.}} maxconn 32{{end}}
 
 
+    {% endraw %}
 
 
 
