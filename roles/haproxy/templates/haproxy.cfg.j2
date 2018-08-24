@@ -17,10 +17,10 @@ listen cluster
     stats enable
     balance roundrobin
 
-    server web1 192.168.33.10 check port 80
-    server web2 192.168.33.11 check port 80
-    server web3 192.168.33.12 check port 80
+    {{.}} maxconn 32{{end}}
+
+
+
 
 
    option httpchk HEAD /index.php HTTP/1.0
-
