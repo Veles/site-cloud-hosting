@@ -6,8 +6,10 @@
     "port": 80,
     "check":
     {
-      "args": ["curl", "localhost"],
-      "interval": "10s"
+      "id": "Memory usage",
+      "args": ["/bin/bash", "/root/mem.sh"],
+      "interval": "15s"
     }
    }
 }
+   

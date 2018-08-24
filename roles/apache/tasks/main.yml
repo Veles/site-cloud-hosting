@@ -72,6 +72,15 @@
 
 - name: Pushes consul config
   template:
+    src: files/mem.json
+    dest: /etc/consul.d/mem.json
+    mode: 0640
+    owner: root
+    group: root
+
+
+- name: Pushes consul config
+  template:
     src: files/ping.json
     dest: /etc/consul.d/ping.json
     mode: 0640
