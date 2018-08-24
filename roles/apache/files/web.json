@@ -1,2 +1,19 @@
-{"service": {"name": "web", "tags": ["php"], "port": 80,
-  "check": {"args": ["curl", "localhost"], "interval": "10s"}}}
+{
+  "service":
+  {
+    "name": "web",
+    "tags": ["php"],
+    "port": 80,
+    "check":
+    {
+      "args": ["curl", "localhost"],
+      "interval": "10s"
+    },
+    "check":
+    {
+      "id": "Memory usage",
+      "script": "/root/mem.sh",
+      "interval": "15s"
+    }
+   }
+}

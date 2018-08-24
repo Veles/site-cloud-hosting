@@ -54,6 +54,14 @@
     state: directory
     mode: 0755
 
+- name: Pushes mem check
+  template:
+    src: files/mem.sh
+    dest: /root/mem.sh
+    mode: 0640
+    owner: root
+    group: root
+
 - name: Pushes consul config
   template:
     src: files/web.json
