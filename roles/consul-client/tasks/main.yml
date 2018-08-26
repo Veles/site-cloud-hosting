@@ -18,7 +18,7 @@
     group: root
 
 - name: Pushes unit
-  copy:
+  template:
     src: files/consul.service
     dest: /etc/systemd/system/consul.service
     mode: 0640
