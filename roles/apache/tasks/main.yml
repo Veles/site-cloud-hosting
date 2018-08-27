@@ -1,3 +1,7 @@
+- name: add repo
+  apt_repository:
+    repo: ppa:gluster/glusterfs-4.1
+
 - name: Installs necessary packages
   apt:
     update_cache: yes
@@ -7,6 +11,7 @@
     - apache2
     - php
     - git
+    - glusterfs-client
 
 - name: Push future default virtual host configuration
   copy:
@@ -35,11 +40,15 @@
     msg: "Configuration file is not valid. Please check that before re-running the playbook."
   when: result is failed
 
+- name: mount gluster cluster
+  command: mount.glusterfs ceph1:/replicated /var/www
+
 - name: Deploy our awesome application
   git:
     repo: https://github.com/Veles/ansible-tuto-demosite.git
     dest: /var/www/awesome-app
   tags: deploy
+  run_once: true
 
 - name: Deactivates the default virtualhost
   command: a2dissite 000-default

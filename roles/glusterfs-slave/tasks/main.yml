@@ -6,3 +6,6 @@
   apt:
     name: glusterfs-server
     update_cache: yes
+
+- name: create storage folder
+  command: mkdir -p /mnt/{{ansible_hostname}}

@@ -9,4 +9,18 @@
     update_cache: yes
 
 - name: create storage folder
-  command: mkdir -p /mnt/`hostname`
+  command: mkdir -p /mnt/{{ansible_hostname}}
+
+- name: connect to peer1
+  command: gluster peer probe ceph2.microhosting.local
+
+- name: connect to peer2
+  command: gluster peer probe ceph3.microhosting.local
+
+- name: create replica
+  command: gluster volume create replicated replica 3 transport tcp ceph1.microhosting.local:/mnt/ceph1 ceph2.microhosting.local:/mnt/ceph2 ceph3.microhosting.local:/mnt/ceph3 force
+  ignore_errors: yes
+
+- name: start replicated
+  command: gluster volume start replicated
+  ignore_errors: yes

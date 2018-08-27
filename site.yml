@@ -6,17 +6,6 @@
   roles:
      - { role: consul-server }
 
-- hosts: web
-  roles:
-     - { role: apache }
-
-- hosts: nginx
-  roles:
-     - { role: nginx }
-
-- hosts: haproxy
-  roles:
-     - { role: haproxy }
 
 - hosts: consul-client
   roles:
@@ -29,3 +18,15 @@
 - hosts: ceph
   roles:
      - { role: glusterfs-slave }
+
+- hosts: web
+  roles:
+     - { role: apache }
+
+- hosts: haproxy
+  roles:
+     - { role: haproxy }
+
+- hosts: nginx
+  roles:
+     - { role: nginx }

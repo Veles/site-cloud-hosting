@@ -1,0 +1,7 @@
+- hosts: ceph
+  roles:
+     - { role: glusterfs-slave }
+
+- hosts: ceph-master
+  roles:
+     - { role: glusterfs-master }
