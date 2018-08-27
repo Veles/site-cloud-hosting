@@ -23,4 +23,7 @@
 
 - name: start replicated
   command: gluster volume start replicated
+<<<<<<< HEAD
   ignore_errors: yes
+=======
+>>>>>>> 36fdf839ddf3bbed76d8306b17651cf28298b7e8
