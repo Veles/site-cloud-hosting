@@ -1,5 +1,5 @@
 - name: add repo
-    apt_repository:
+  apt_repository:
     repo: ppa:gluster/glusterfs-4.1
 
 

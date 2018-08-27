@@ -1,6 +1,7 @@
 - name: add repo
-    apt_repository:
+  apt_repository:
     repo: ppa:gluster/glusterfs-4.1
+
 - name: install gluster
   apt:
     name: glusterfs-server

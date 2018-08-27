@@ -31,3 +31,5 @@ nginx
 db
 ceph
 consul-server
+[ceph-master]
+ceph1.microhosting.local ansible_host=192.168.33.17 ansible_user=root

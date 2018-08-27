@@ -49,7 +49,8 @@
   notify:
     - restart apache
 
-- file:
+- name: create consul directory
+  file:
     path: /etc/consul.d
     state: directory
     mode: 0755
@@ -62,7 +63,7 @@
     owner: root
     group: root
 
-- name: Pushes consul config
+- name: Pushes web check
   template:
     src: files/web.json
     dest: /etc/consul.d/web.json
@@ -70,7 +71,7 @@
     owner: root
     group: root
 
-- name: Pushes consul config
+- name: Pushes mem Check
   template:
     src: files/mem.json
     dest: /etc/consul.d/mem.json
@@ -79,10 +80,15 @@
     group: root
 
 
-- name: Pushes consul config
+- name: Pushes ping check
   template:
     src: files/ping.json
     dest: /etc/consul.d/ping.json
     mode: 0640
     owner: root
     group: root
+
+- name: restart consul
+  service:
+    name: consul
+    state: restarted
